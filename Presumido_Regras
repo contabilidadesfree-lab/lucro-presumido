@@ -1,0 +1,150 @@
+{
+  "regime": "lucro_presumido",
+
+  "descricao": "Regras de presunção, majoração e tributação do Lucro Presumido conforme legislação vigente",
+
+  "limites": {
+    "faturamento_anual_majoracao": 5000000,
+    "faturamento_trimestral_majoracao": 1250000
+  },
+
+  "majoracao_presuncao": {
+    "ativo": true,
+    "vigencia": {
+      "inicio": "2026-01-02",
+      "fim": null
+    },
+    "percentual_aumento": 0.10,
+    "base_calculo": "percentual_presuncao",
+    "aplicacao": "somente_excedente",
+    "verificacao": "trimestral",
+    "regra_sensivel": true,
+    "fundamentacao_legal": {
+      "lei_complementar": "LC 224/2025",
+      "instrucao_normativa": "IN RFB 2.306/2026"
+    }
+  },
+
+  "presuncoes": {
+    "revenda_combustiveis": {
+      "descricao": "Revenda de combustíveis e gás natural",
+      "padrao": { "irpj": 0.016, "csll": 0.12 },
+      "excedente": { "irpj": 0.0176, "csll": 0.132 }
+    },
+
+    "comercio_industria": {
+      "descricao": "Comércio e Indústria em geral",
+      "padrao": { "irpj": 0.08, "csll": 0.12 },
+      "excedente": { "irpj": 0.088, "csll": 0.132 }
+    },
+
+    "transporte_cargas": {
+      "descricao": "Transporte de cargas",
+      "padrao": { "irpj": 0.08, "csll": 0.12 },
+      "excedente": { "irpj": 0.088, "csll": 0.132 }
+    },
+
+    "atividades_imobiliarias": {
+      "descricao": "Atividades imobiliárias (venda de imóveis)",
+      "padrao": { "irpj": 0.08, "csll": 0.12 },
+      "excedente": { "irpj": 0.088, "csll": 0.132 }
+    },
+
+    "transporte_passageiros": {
+      "descricao": "Transporte de passageiros",
+      "padrao": { "irpj": 0.16, "csll": 0.12 },
+      "excedente": { "irpj": 0.176, "csll": 0.132 }
+    },
+
+    "servicos_gerais": {
+      "descricao": "Serviços em geral",
+      "padrao": { "irpj": 0.32, "csll": 0.32 },
+      "excedente": { "irpj": 0.352, "csll": 0.352 }
+    },
+
+    "servicos_profissionais_regulamentados": {
+      "descricao": "Serviços profissionais regulamentados (advocacia, engenharia, etc.)",
+      "padrao": { "irpj": 0.32, "csll": 0.32 },
+      "excedente": { "irpj": 0.352, "csll": 0.352 }
+    },
+
+    "administracao_locacao_bens": {
+      "descricao": "Administração ou locação de bens móveis ou imóveis",
+      "padrao": { "irpj": 0.32, "csll": 0.32 },
+      "excedente": { "irpj": 0.352, "csll": 0.352 }
+    },
+
+    "servicos_hospitalares": {
+      "descricao": "Serviços hospitalares",
+      "condicional": true,
+      "regra_sensivel": true,
+      "padrao": {
+        "irpj_min": 0.08,
+        "irpj_max": 0.16,
+        "csll_min": 0.12,
+        "csll_max": 0.32
+      },
+      "excedente": {
+        "irpj_min": 0.088,
+        "irpj_max": 0.176,
+        "csll_min": 0.132,
+        "csll_max": 0.352
+      },
+      "observacao": "Percentual reduzido depende do cumprimento dos requisitos legais"
+    },
+
+    "operacoes_financeiras_factoring": {
+      "descricao": "Operações financeiras e factoring",
+      "regra_sensivel": true,
+      "padrao": { "irpj": 0.384, "csll": 0.384 },
+      "excedente": { "irpj": 0.4224, "csll": 0.4224 }
+    }
+  },
+
+  "atividades_multiplas": {
+    "aplicacao_majoracao": "proporcional_por_atividade",
+    "criterio_rateio": "percentual_receita"
+  },
+
+  "impostos_federais": {
+    "irpj": {
+      "aliquota_base": 0.15,
+      "apuracao": "trimestral",
+      "adicional": {
+        "limite_mensal": 20000,
+        "aliquota": 0.10
+      }
+    },
+    "csll": {
+      "aliquota": 0.09,
+      "apuracao": "trimestral"
+    }
+  },
+
+  "pis_cofins": {
+    "ativo": false,
+    "substituido_por": "CBS",
+    "ano_substituicao": 2027
+  },
+
+  "inss_patronal": {
+    "aliquota": 0.20,
+    "incide_sobre": "folha",
+    "apuracao": "mensal"
+  },
+
+  "fallback": {
+    "usar_presuncao_padrao_se_nao_identificado": true
+  },
+
+  "referencias_legais": [
+    {
+      "fonte": "Lei Complementar 224/2025",
+      "descricao": "Majoração da base de presunção para empresas com faturamento elevado"
+    },
+    {
+      "fonte": "IN RFB 2.306/2026",
+      "descricao": "Verificação trimestral da majoração e critérios de aplicação"
+    }
+  ]
+}
