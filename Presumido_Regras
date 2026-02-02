@@ -14,7 +14,7 @@
       "inicio": "2026-01-02",
       "fim": null
     },
-    "percentual_aumento": 0.10,
+    "percentual_aumento": 0.00,
     "base_calculo": "percentual_presuncao",
     "aplicacao": "somente_excedente",
     "verificacao": "trimestral",
